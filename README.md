@@ -56,6 +56,24 @@ The objective of this project is to design, implement, and analyze a Finite Stat
 **Conclusion:**
 The project successfully demonstrated the design, implementation, and analysis of a Finite State Machine for a specific digital application. Through this project, a comprehensive understanding of FSM principles and their practical applications in digital systems was achieved. The simulations verified the correct operation of the FSM, confirming its effectiveness in controlling the specified digital system. This project provides valuable insights into the design and application of FSMs in digital electronics, paving the way for more advanced control systems in future projects.
 
+// circuit design of fsm
+
+
+
+![Finite-State-Machine-Design](https://github.com/user-attachments/assets/f9b7f83d-e710-4e50-876a-080f017f2f9b)
+
+
+
+// output wave forms of the FSM
+
+
+![Finite-State-Machine-Waveform](https://github.com/user-attachments/assets/1a9cdb42-b44c-4868-8a61-4bcdcbade715)
+
+
+// Out put values for the FSM
+
+
+![table for fsm](https://github.com/user-attachments/assets/c70df3bf-b885-4044-a031-ffdba54317b4)
 
 
 

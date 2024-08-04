@@ -1,0 +1,86 @@
+// veri log code for the design of the finite state machine(FSM) using the modelsim simulator.
+
+// verilod for fsm
+
+
+module Traffic_Light_FSM (
+    input wire clk,
+    input wire reset,
+    output reg [1:0] state
+);
+
+// State encoding
+localparam RED = 2'b00,
+           GREEN = 2'b01,
+           YELLOW = 2'b10;
+
+// State register
+reg [1:0] current_state, next_state;
+
+// State transition logic
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        current_state <= RED;
+    end else begin
+        current_state <= next_state;
+    end
+end
+
+// Next state logic
+always @(*) begin
+    case (current_state)
+        RED: next_state = GREEN;
+        GREEN: next_state = YELLOW;
+        YELLOW: next_state = RED;
+        default: next_state = RED;
+    endcase
+end
+
+// Output logic
+always @(posedge clk or posedge reset) begin
+    if (reset) begin
+        state <= RED;
+    end else begin
+        state <= current_state;
+    end
+end
+
+endmodule
+
+// test bench for the finite state machine
+
+
+module Traffic_Light_FSM_tb;
+
+reg clk;
+reg reset;
+wire [1:0] state;
+
+Traffic_Light_FSM uut (
+    .clk(clk),
+    .reset(reset),
+    .state(state)
+);
+
+// Clock generation
+initial begin
+    clk = 0;
+    forever #5 clk = ~clk; // 10 time units period
+end
+
+// Test sequence
+initial begin
+    // Initialize inputs
+    reset = 1;
+    #10 reset = 0;
+
+    // Run the simulation for a few clock cycles to observe state transitions
+    #100 $finish;
+end
+
+// Monitor state changes
+initial begin
+    $monitor("At time %t, state = %b", $time, state);
+end
+
+endmodule
